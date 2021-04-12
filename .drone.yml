@@ -1,0 +1,29 @@
+---
+kind: pipeline
+type: docker
+name: testing
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: lint
+  pull: always
+  image: toolhippie/yamllint:latest
+  commands:
+  - yamllint .
+
+- name: kustomize
+  pull: always
+  image: toolhippie/kustomize:latest
+  commands:
+  - kustomize build .
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+...

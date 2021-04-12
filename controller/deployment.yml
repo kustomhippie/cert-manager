@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: cert-manager
+
+spec:
+  replicas: 1
+
+  template:
+    spec:
+      serviceAccountName: cert-manager
+
+      containers:
+        - name: server
+          image: cert-controller
+          imagePullPolicy: Always
+
+          args:
+            - --v=2
+            - --leader-election-namespace=$(POD_NAMESPACE)
+            - --cluster-resource-namespace=$(POD_NAMESPACE)
+
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+
+          ports:
+            - name: http
+              containerPort: 9402
+              protocol: TCP
+
+...

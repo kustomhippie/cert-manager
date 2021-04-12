@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: cert-manager-webhook
+
+spec:
+  replicas: 1
+
+  template:
+    spec:
+      serviceAccountName: cert-webhook
+
+      containers:
+        - name: server
+          image: cert-webhook
+          imagePullPolicy: Always
+
+          args:
+            - --v=2
+            - --secure-port=10250
+            - --dynamic-serving-ca-secret-namespace=$(POD_NAMESPACE)
+            - --dynamic-serving-ca-secret-name=webhook-ca
+            - --dynamic-serving-dns-names=cert-webhook,cert-webhook.$(POD_NAMESPACE),cert-webhook.$(POD_NAMESPACE).svc
+
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+
+          ports:
+            - name: https
+              containerPort: 10250
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /livez
+              port: 6080
+              scheme: HTTP
+            failureThreshold: 3
+            successThreshold: 1
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 1
+
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 6080
+              scheme: HTTP
+            failureThreshold: 3
+            successThreshold: 1
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 1
+
+...

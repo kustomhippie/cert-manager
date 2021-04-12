@@ -1,0 +1,13 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - certificaterequests.yml
+  - certificates.yml
+  - challenges.yml
+  - clusterissuers.yml
+  - issuers.yml
+  - orders.yml
+
+...
