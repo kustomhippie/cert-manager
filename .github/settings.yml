@@ -1,3 +1,4 @@
+---
 repository:
   name: cert-manager
   description: Reusable Kustomize manifests for cert-manager
@@ -83,3 +84,5 @@ branches:
           - renovate
         users: []
         teams: []
+
+...
