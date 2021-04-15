@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: cert-manager-cainjector
+  name: cert-cainjector
 
 spec:
   replicas: 1

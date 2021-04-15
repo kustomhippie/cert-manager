@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: cert-manager-webhook
+  name: cert-webhook
 
 spec:
   replicas: 1
