@@ -15,7 +15,7 @@ spec:
       containers:
         - name: server
           image: cert-cainjector
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
 
           args:
             - --v=2
