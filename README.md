@@ -1,9 +1,9 @@
 # cert-manager
 
-[![Build Status](http://cloud.drone.io/api/badges/kustomhippie/cert-manager/status.svg)](http://cloud.drone.io/kustomhippie/cert-manager)
+[![Build Status](http://drone.webhippie.de/api/badges/kustomhippie/cert-manager/status.svg)](http://drone.webhippie.de/kustomhippie/cert-manager)
 [![Join the Matrix chat at https://matrix.to/#/#webhippie:matrix.org](https://img.shields.io/badge/matrix-%23webhippie%3Amatrix.org-7bc9a4.svg)](https://matrix.to/#/#webhippie:matrix.org)
 
-This repository defines a [Kustomize](https://kustomize.io/) manifest which could be used by other repositories to generate a [Kubernetes](https://kubernetes.io/) manifest.
+This repository defines a [Kustomize](https://kustomize.io/) manifest which could be used by other repositories to generate a [Kubernetes](https://kubernetes.io/) manifest for the installation of [cert-manager](https://github.com/jetstack/cert-manager).
 
 ## Usage
 
