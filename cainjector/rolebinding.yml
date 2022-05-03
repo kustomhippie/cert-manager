@@ -4,6 +4,9 @@ kind: RoleBinding
 
 metadata:
   name: cert-cainjector:leaderelection
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: cainjector
 
 roleRef:
   apiGroup: rbac.authorization.k8s.io

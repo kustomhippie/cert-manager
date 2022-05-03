@@ -8,10 +8,11 @@ resources:
   - clusterrolebinding.yml
   - role.yml
   - rolebinding.yml
-
   - deployment.yml
 
-commonLabels:
-  app.kubernetes.io/component: cainjector
+images:
+  - name: cert-cainjector
+    newName: quay.io/jetstack/cert-manager-cainjector
+    newTag: "v1.8.0"
 
 ...

@@ -8,11 +8,12 @@ resources:
   - clusterrolebinding.yml
   - role.yml
   - rolebinding.yml
-
   - service.yml
   - deployment.yml
 
-commonLabels:
-  app.kubernetes.io/component: controller
+images:
+  - name: cert-controller
+    newName: quay.io/jetstack/cert-manager-controller
+    newTag: "v1.8.0"
 
 ...

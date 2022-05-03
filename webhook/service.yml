@@ -4,8 +4,15 @@ kind: Service
 
 metadata:
   name: cert-webhook
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: webhook
 
 spec:
+  selector:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: webhook
+
   ports:
     - name: https
       port: 443

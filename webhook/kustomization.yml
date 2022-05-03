@@ -4,16 +4,18 @@ kind: Kustomization
 
 resources:
   - serviceaccount.yml
+  - clusterrole.yml
+  - clusterrolebinding.yml
   - role.yml
   - rolebinding.yml
-
   - service.yml
   - deployment.yml
-
   - mutatingwebhook.yml
   - validatingwebhook.yml
 
-commonLabels:
-  app.kubernetes.io/component: webhook
+images:
+  - name: cert-webhook
+    newName: quay.io/jetstack/cert-manager-webhook
+    newTag: "v1.8.0"
 
 ...

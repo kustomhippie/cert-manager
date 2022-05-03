@@ -4,6 +4,9 @@ kind: ClusterRole
 
 metadata:
   name: cert-issuers
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
 
 rules:
   - apiGroups:
@@ -13,6 +16,7 @@ rules:
       - "issuers/status"
     verbs:
       - "update"
+      - "patch"
   - apiGroups:
       - "cert-manager.io"
     resources:
@@ -47,6 +51,9 @@ kind: ClusterRole
 
 metadata:
   name: cert-clusterissuers
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
 
 rules:
   - apiGroups:
@@ -56,6 +63,7 @@ rules:
       - "clusterissuers/status"
     verbs:
       - "update"
+      - "patch"
   - apiGroups:
       - "cert-manager.io"
     resources:
@@ -90,6 +98,9 @@ kind: ClusterRole
 
 metadata:
   name: cert-certificates
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
 
 rules:
   - apiGroups:
@@ -101,6 +112,7 @@ rules:
       - "certificaterequests/status"
     verbs:
       - "update"
+      - "patch"
   - apiGroups:
       - "cert-manager.io"
     resources:
@@ -140,6 +152,7 @@ rules:
       - "create"
       - "update"
       - "delete"
+      - "patch"
   - apiGroups:
       - ""
     resources:
@@ -155,6 +168,9 @@ kind: ClusterRole
 
 metadata:
   name: cert-orders
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
 
 rules:
   - apiGroups:
@@ -164,6 +180,7 @@ rules:
       - "orders/status"
     verbs:
       - "update"
+      - "patch"
   - apiGroups:
       - "acme.cert-manager.io"
     resources:
@@ -218,6 +235,9 @@ kind: ClusterRole
 
 metadata:
   name: cert-challenges
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
 
 rules:
   - apiGroups:
@@ -227,6 +247,7 @@ rules:
       - "challenges/status"
     verbs:
       - "update"
+      - "patch"
   - apiGroups:
       - "acme.cert-manager.io"
     resources:
@@ -282,6 +303,17 @@ rules:
       - "delete"
       - "update"
   - apiGroups:
+      - "gateway.networking.k8s.io"
+    resources:
+      - "httproutes"
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+      - "create"
+      - "delete"
+      - "update"
+  - apiGroups:
       - "route.openshift.io"
     resources:
       - "routes/custom-host"
@@ -309,6 +341,9 @@ kind: ClusterRole
 
 metadata:
   name: cert-ingress
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
 
 rules:
   - apiGroups:
@@ -346,6 +381,22 @@ rules:
     verbs:
       - "update"
   - apiGroups:
+      - "gateway.networking.k8s.io"
+    resources:
+      - "gateways"
+      - "httproutes"
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+  - apiGroups:
+      - "gateway.networking.k8s.io"
+    resources:
+      - "gateways/finalizers"
+      - "httproutes/finalizers"
+    verbs:
+      - "update"
+  - apiGroups:
       - ""
     resources:
       - "events"
@@ -361,6 +412,8 @@ kind: ClusterRole
 metadata:
   name: cert-view
   labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
     rbac.authorization.k8s.io/aggregate-to-admin: "true"
     rbac.authorization.k8s.io/aggregate-to-edit: "true"
     rbac.authorization.k8s.io/aggregate-to-view: "true"
@@ -394,6 +447,8 @@ kind: ClusterRole
 metadata:
   name: cert-edit
   labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
     rbac.authorization.k8s.io/aggregate-to-admin: "true"
     rbac.authorization.k8s.io/aggregate-to-edit: "true"
 
@@ -411,13 +466,87 @@ rules:
       - "patch"
       - "update"
   - apiGroups:
+      - "cert-manager.io"
+    resources:
+      - "certificates/status"
+    verbs:
+      - "update"
+  - apiGroups:
       - "acme.cert-manager.io"
     resources:
       - "challenges"
       - "orders"
     verbs:
+      - "create"
+      - "delete"
+      - "deletecollection"
+      - "patch"
+      - "update"
+
+...
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+
+metadata:
+  name: cert-manager-approve:cert-manager-io
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
+
+rules:
+  - apiGroups:
+      - "cert-manager.io"
+    resources:
+      - "signers"
+    verbs:
+      - "approve"
+    resourceNames:
+      - "issuers.cert-manager.io/*"
+      - "clusterissuers.cert-manager.io/*"
+
+...
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+
+metadata:
+  name: cert-manager-certificatesigningrequests
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: controller
+
+rules:
+  - apiGroups:
+      - "certificates.k8s.io"
+    resources:
+      - "certificatesigningrequests"
+    verbs:
       - "get"
       - "list"
       - "watch"
+      - "update"
+  - apiGroups:
+      - "certificates.k8s.io"
+    resources:
+      - "certificatesigningrequests/status"
+    verbs:
+      - "update"
+      - "patch"
+  - apiGroups:
+      - "certificates.k8s.io"
+    resources:
+      - "signers"
+    resourceNames:
+      - "issuers.cert-manager.io/*"
+      - "clusterissuers.cert-manager.io/*"
+    verbs:
+      - "sign"
+  - apiGroups:
+      - "authorization.k8s.io"
+    resources:
+      - "subjectaccessreviews"
+    verbs:
+      - "create"
 
 ...

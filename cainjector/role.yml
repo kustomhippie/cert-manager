@@ -4,23 +4,26 @@ kind: Role
 
 metadata:
   name: cert-cainjector:leaderelection
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: cainjector
 
 rules:
   - apiGroups:
-      - ""
+      - "coordination.k8s.io"
+    resources:
+      - "leases"
     resourceNames:
       - "cert-manager-cainjector-leader-election"
       - "cert-manager-cainjector-leader-election-core"
-    resources:
-      - "configmaps"
     verbs:
       - "get"
       - "update"
       - "patch"
   - apiGroups:
-      - ""
+      - "coordination.k8s.io"
     resources:
-      - "configmaps"
+      - "leases"
     verbs:
       - "create"
 

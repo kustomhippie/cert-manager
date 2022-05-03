@@ -4,6 +4,9 @@ kind: Role
 
 metadata:
   name: cert-webhook:dynamic-serving
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: webhook
 
 rules:
   - apiGroups:

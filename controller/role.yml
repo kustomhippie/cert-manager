@@ -7,19 +7,19 @@ metadata:
 
 rules:
   - apiGroups:
-      - ""
+      - "coordination.k8s.io"
+    resources:
+      - "leases"
     resourceNames:
       - "cert-manager-controller"
-    resources:
-      - "configmaps"
     verbs:
       - "get"
       - "update"
       - "patch"
   - apiGroups:
-      - ""
+      - "coordination.k8s.io"
     resources:
-      - "configmaps"
+      - "leases"
     verbs:
       - "create"
 

@@ -4,13 +4,15 @@ kind: MutatingWebhookConfiguration
 
 metadata:
   name: cert-webhook
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: webhook
   annotations:
     cert-manager.io/inject-ca-from-secret: cert-manager/webhook-ca
 
 webhooks:
   - admissionReviewVersions:
       - v1
-      - v1beta1
     clientConfig:
       service:
         name: cert-webhook

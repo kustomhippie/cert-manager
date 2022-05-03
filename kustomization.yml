@@ -8,18 +8,4 @@ resources:
   - controller/
   - webhook/
 
-commonLabels:
-  app.kubernetes.io/name: cert-manager
-
-images:
-  - name: cert-cainjector
-    newName: quay.io/jetstack/cert-manager-cainjector
-    newTag: "v1.8.0"
-  - name: cert-controller
-    newName: quay.io/jetstack/cert-manager-controller
-    newTag: "v1.8.0"
-  - name: cert-webhook
-    newName: quay.io/jetstack/cert-manager-webhook
-    newTag: "v1.8.0"
-
 ...

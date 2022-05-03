@@ -4,13 +4,34 @@ kind: Deployment
 
 metadata:
   name: cert-webhook
+  labels:
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/component: webhook
 
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
+
+  strategy:
+    type: Recreate
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cert-manager
+      app.kubernetes.io/component: webhook
 
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cert-manager
+        app.kubernetes.io/component: webhook
+
     spec:
+      enableServiceLinks: false
       serviceAccountName: cert-webhook
+
+      securityContext:
+        runAsNonRoot: true
 
       containers:
         - name: server
@@ -23,6 +44,9 @@ spec:
             - --dynamic-serving-ca-secret-namespace=$(POD_NAMESPACE)
             - --dynamic-serving-ca-secret-name=webhook-ca
             - --dynamic-serving-dns-names=cert-webhook,cert-webhook.$(POD_NAMESPACE),cert-webhook.$(POD_NAMESPACE).svc
+
+          securityContext:
+            allowPrivilegeEscalation: false
 
           env:
             - name: POD_NAMESPACE
