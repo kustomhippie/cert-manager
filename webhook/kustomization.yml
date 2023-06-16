@@ -16,6 +16,6 @@ resources:
 images:
   - name: cert-webhook
     newName: quay.io/jetstack/cert-manager-webhook
-    newTag: "v1.12.1"
+    newTag: "v1.12.2"
 
 ...
