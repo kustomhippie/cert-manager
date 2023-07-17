@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0](https://github.com/kustomhippie/cert-manager/compare/v1.0.1...v2.0.0) (2023-07-17)
+
+
+### Features
+
+* **major:** update actionhippie/kustomize action to v2 ([f0a941c](https://github.com/kustomhippie/cert-manager/commit/f0a941c5c83bba23f9308fb83685cf7ef65f1146))
+
 ## [1.0.1](https://github.com/kustomhippie/cert-manager/compare/v1.0.0...v1.0.1) (2023-06-19)
 
 ## 1.0.0 (2023-06-05)
