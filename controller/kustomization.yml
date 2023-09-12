@@ -14,6 +14,6 @@ resources:
 images:
   - name: cert-controller
     newName: quay.io/jetstack/cert-manager-controller
-    newTag: "v1.12.4"
+    newTag: "v1.13.0"
 
 ...
