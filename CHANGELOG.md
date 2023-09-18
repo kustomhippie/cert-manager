@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/kustomhippie/cert-manager/compare/v2.0.2...v2.1.0) (2023-09-18)
+
+
+### Features
+
+* **deps:** update minor versions to v1.13.0 ([8d0cfad](https://github.com/kustomhippie/cert-manager/commit/8d0cfadcf5a173066428c7fae8579c5ddd61ac10))
+
 ## [2.0.2](https://github.com/kustomhippie/cert-manager/compare/v2.0.1...v2.0.2) (2023-09-04)
 
 
