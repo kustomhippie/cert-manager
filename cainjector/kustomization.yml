@@ -13,6 +13,6 @@ resources:
 images:
   - name: cert-cainjector
     newName: quay.io/jetstack/cert-manager-cainjector
-    newTag: "v1.13.0"
+    newTag: "v1.13.1"
 
 ...
