@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.3](https://github.com/kustomhippie/cert-manager/compare/v2.1.2...v2.1.3) (2023-12-18)
+
+
+### Bugfixes
+
+* **deps:** update patch versions to v1.13.3 ([ce370ae](https://github.com/kustomhippie/cert-manager/commit/ce370aee8f9862851ac88324a923633dfaa5f5d2))
+* **deps:** update quay.io/jetstack/cert-manager-controller docker tag to v1.13.3 ([ebfbe29](https://github.com/kustomhippie/cert-manager/commit/ebfbe2963938b8d576997e41fe68dc8c75a447b8))
+
 ## [2.1.2](https://github.com/kustomhippie/cert-manager/compare/v2.1.1...v2.1.2) (2023-11-06)
 
 
