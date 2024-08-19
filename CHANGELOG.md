@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.3](https://github.com/kustomhippie/cert-manager/compare/v2.3.2...v2.3.3) (2024-08-19)
+
+
+### Bugfixes
+
+* **deps:** update patch versions to v1.15.3 ([58e18b2](https://github.com/kustomhippie/cert-manager/commit/58e18b2fc09d763fd91f3e80a7211e03295fe227))
+
 ## [2.3.2](https://github.com/kustomhippie/cert-manager/compare/v2.3.1...v2.3.2) (2024-08-05)
 
 
