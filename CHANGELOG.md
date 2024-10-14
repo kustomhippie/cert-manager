@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.1](https://github.com/kustomhippie/cert-manager/compare/v2.4.0...v2.4.1) (2024-10-14)
+
+
+### Bugfixes
+
+* **deps:** update patch versions to v1.16.1 ([4375793](https://github.com/kustomhippie/cert-manager/commit/4375793efc5078f7c5344b3caa5e89689ab5561a))
+
 ## [2.4.0](https://github.com/kustomhippie/cert-manager/compare/v2.3.3...v2.4.0) (2024-10-07)
 
 
