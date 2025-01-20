@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.3](https://github.com/kustomhippie/cert-manager/compare/v2.4.2...v2.4.3) (2025-01-20)
+
+
+### Bugfixes
+
+* **deps:** update patch versions to v1.16.3 ([#56](https://github.com/kustomhippie/cert-manager/issues/56)) ([dcc6f4b](https://github.com/kustomhippie/cert-manager/commit/dcc6f4b87725eb3a7b2b80c8b778aa5c1f6d87af))
+* **deps:** update quay.io/jetstack/cert-manager-webhook docker tag to v1.16.3 ([#55](https://github.com/kustomhippie/cert-manager/issues/55)) ([caa7872](https://github.com/kustomhippie/cert-manager/commit/caa787282bcae0699cb2d2e9932016a8dd923f16))
+
 ## [2.4.2](https://github.com/kustomhippie/cert-manager/compare/v2.4.1...v2.4.2) (2024-11-25)
 
 
