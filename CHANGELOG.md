@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.2](https://github.com/kustomhippie/cert-manager/compare/v2.6.1...v2.6.2) (2025-07-07)
+
+
+### Bugfixes
+
+* **deps:** update patch versions to v1.18.2 ([#62](https://github.com/kustomhippie/cert-manager/issues/62)) ([ac3d6bf](https://github.com/kustomhippie/cert-manager/commit/ac3d6bf6c1d0db38d33cabd95507b538effed77c))
+
 ## [2.6.1](https://github.com/kustomhippie/cert-manager/compare/v2.6.0...v2.6.1) (2025-06-23)
 
 
